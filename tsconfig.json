@@ -3,6 +3,7 @@
         "outDir": "dist/js", //estamos dizendo onde ele irá salvar os arquivos de ts para js
         "target": "ES6", //Estamos dizendo qual versão do ecamascript queremos que ele transforme o nosso arquivo ts
         "noEmitOnError": true, // estamos dizendo que, só queremos que ele compile caso não tenha erro, ou seja só vai gera os arquivos js caso não tenha nenhum erro de compilação dos arquivos ts
+        "noImplicitAny": true, //estamos declarando que ele não vai tipa por padrão os elementos cmo any
     },
     "include": ["app/**/*"] //estamos dizendo que queremos compilar a pasta app e toda subpasta e seus arquivos de ts para js
 }
