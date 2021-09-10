@@ -1,9 +1,9 @@
 import { Negociacoes } from "../models/negociacoe.js";
 
 export class NegociacaoesView{
-    private elemento: HTMLElement;
+    private elemento: HTMLElement; //Criando uma variável do tipo HTMLElement
     constructor(seletor: string){
-        this.elemento = document.querySelector(seletor);
+        this.elemento = document.querySelector(seletor); //Atribuindo á nossa variável um elemento do HTML
     }
 
     template(model: Negociacoes): string{

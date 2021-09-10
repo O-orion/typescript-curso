@@ -1,6 +1,6 @@
 export class NegociacaoesView {
     constructor(seletor) {
-        this.elemento = document.querySelector(seletor);
+        this.elemento = document.querySelector(seletor); //Atribuindo á nossa variável um elemento do HTML
     }
     template(model) {
         return `
