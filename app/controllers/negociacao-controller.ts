@@ -1,6 +1,7 @@
 import { Negociacoes } from './../models/negociacoe.js';
 import { Negociacao } from "../models/negociacao.js";
 import { NegociacaoesView } from '../views/negociacoes-views.js';
+import { mensagemView } from '../views/mensagem-view.js';
 
 export class NegociacaoController{
     private inputData: HTMLInputElement;
@@ -8,6 +9,7 @@ export class NegociacaoController{
     private inputValor: HTMLInputElement;
     private negociacoes: Negociacoes = new Negociacoes
     private negociacoesView = new NegociacaoesView('#negociacoesView'); //instanciando e passando o id do elemento dom de onde queremo que nossa tabela seja renderizada
+    private mensagemView = new mensagemView('#mensagemView');
 
     constructor(){
         //Recuperando os valores dos elementos do dom e  guardando em nossas variaveis
@@ -22,6 +24,7 @@ export class NegociacaoController{
         this.negociacoes.adiciona(negociacao); // adicionando uma negociacao a nossa lista
         console.log(this.negociacoes.lista());
         this.negociacoesView.update(this.negociacoes);
+        this.mensagemView.update("Adicionado com Sucesso, JESUS CRISTO TE AMA!!")
         this.limparForm();
 
     }

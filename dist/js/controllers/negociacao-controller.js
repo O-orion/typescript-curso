@@ -1,10 +1,12 @@
 import { Negociacoes } from './../models/negociacoe.js';
 import { Negociacao } from "../models/negociacao.js";
 import { NegociacaoesView } from '../views/negociacoes-views.js';
+import { mensagemView } from '../views/mensagem-view.js';
 export class NegociacaoController {
     constructor() {
         this.negociacoes = new Negociacoes;
         this.negociacoesView = new NegociacaoesView('#negociacoesView'); //instanciando e passando o id do elemento dom de onde queremo que nossa tabela seja renderizada
+        this.mensagemView = new mensagemView('#mensagemView');
         //Recuperando os valores dos elementos do dom e  guardando em nossas variaveis
         this.inputData = document.querySelector("#data");
         this.inputQuantidade = document.querySelector("#quantidade");
@@ -16,6 +18,7 @@ export class NegociacaoController {
         this.negociacoes.adiciona(negociacao); // adicionando uma negociacao a nossa lista
         console.log(this.negociacoes.lista());
         this.negociacoesView.update(this.negociacoes);
+        this.mensagemView.update("Adicionado com Sucesso, JESUS CRISTO TE AMA!!");
         this.limparForm();
     }
     criarNegociacao() {
