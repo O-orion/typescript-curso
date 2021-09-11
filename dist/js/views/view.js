@@ -6,7 +6,4 @@ export class View {
         const template = this.template(model);
         this.elemento.innerHTML = template; //Inner vai transforma nossa string em um elemento HTML é injetar dentro do DOM, no caso dntro da nossa div
     }
-    template(model) {
-        throw Error('Por-favor implementar método template na classe filha');
-    }
 }
