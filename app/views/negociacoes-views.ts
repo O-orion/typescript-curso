@@ -1,10 +1,11 @@
 import { Negociacoes } from "../models/negociacoe.js";
+import { View } from "./view.js";
 
-export class NegociacaoesView{
-    private elemento: HTMLElement; //Criando uma variável do tipo HTMLElement
+export class NegociacaoesView extends View<Negociacoes>{
+    /*private elemento: HTMLElement; //Criando uma variável do tipo HTMLElement
     constructor(seletor: string){
         this.elemento = document.querySelector(seletor); //Atribuindo á nossa variável um elemento do HTML
-    }
+    } */
 
     template(model: Negociacoes): string{
         return `
@@ -38,8 +39,8 @@ export class NegociacaoesView{
 
      Intl -> Internacionalization, criando uma instancia de uma formatação de data com o local onde o usuário se encontra
     */ 
-    update(model: Negociacoes): void{
+    /*update(model: Negociacoes): void{
         const template = this.template(model);
         this.elemento.innerHTML = template; //inner vai transforma minha string em um elemento do DOM
-    }
+    } */
 }
