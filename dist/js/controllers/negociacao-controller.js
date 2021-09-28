@@ -2,11 +2,14 @@ import { Negociacoes } from './../models/negociacoe.js';
 import { Negociacao } from "../models/negociacao.js";
 import { NegociacaoesView } from '../views/negociacoes-views.js';
 import { mensagemView } from '../views/mensagem-view.js';
+import { DiasDaSemana } from '../enums/dias-da-semana.js';
 export class NegociacaoController {
     constructor() {
         this.negociacoes = new Negociacoes;
         this.negociacoesView = new NegociacaoesView('#negociacoesView'); //instanciando e passando o id do elemento dom de onde queremo que nossa tabela seja renderizada
         this.mensagemView = new mensagemView('#mensagemView');
+        this.SABADO = 6;
+        this.DOMINGO = 0;
         //Recuperando os valores dos elementos do dom e  guardando em nossas variaveis
         this.inputData = document.querySelector("#data");
         this.inputQuantidade = document.querySelector("#quantidade");
@@ -15,11 +18,16 @@ export class NegociacaoController {
     }
     postNegocicao() {
         const negociacao = this.criarNegociacao();
+        if (!this.ehDiaUlti(negociacao.data)) {
+            this.mensagemView.update('Apenas dias úteis da semana!');
+            return;
+        }
         this.negociacoes.adiciona(negociacao); // adicionando uma negociacao a nossa lista
-        console.log(this.negociacoes.lista());
-        this.negociacoesView.update(this.negociacoes);
-        this.mensagemView.update("Adicionado com Sucesso, JESUS CRISTO TE AMA!!");
         this.limparForm();
+        this.atualizarView();
+    }
+    ehDiaUlti(data) {
+        return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.SABADO;
     }
     criarNegociacao() {
         const rgex = /-/g;
@@ -33,5 +41,9 @@ export class NegociacaoController {
         this.inputQuantidade.value = '';
         this.inputValor.value = '';
         this.inputData.focus();
+    }
+    atualizarView() {
+        this.negociacoesView.update(this.negociacoes);
+        this.mensagemView.update("Adicionado com Sucesso, JESUS CRISTO TE AMA!!");
     }
 }

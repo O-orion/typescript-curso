@@ -7,7 +7,7 @@ export class mensagemView extends View<string> {
         this.elemento = document.querySelector(seletor); //caputando a div no formulário
     }*/
 
-    template(model: string):string{
+    protected template(model: string):string{
         return `
           <p class="alert alert-info">${model}</p>
         `

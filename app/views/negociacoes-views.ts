@@ -7,7 +7,7 @@ export class NegociacaoesView extends View<Negociacoes>{
         this.elemento = document.querySelector(seletor); //Atribuindo á nossa variável um elemento do HTML
     } */
 
-    template(model: Negociacoes): string{
+    protected template(model: Negociacoes): string{
         return `
            <table class="table table-hover table-bordered">
               <thead>
@@ -21,7 +21,7 @@ export class NegociacaoesView extends View<Negociacoes>{
                 ${model.lista().map( negociacao => {
                     return `
                       <tr>
-                        <td>${new Intl.DateTimeFormat().format(negociacao.data)}</td>
+                        <td>${this.formata(negociacao.data)}</td>
                         <td>${negociacao.quantidade}</td>
                         <td>$: ${negociacao.valor}</td>
                       </tr>
@@ -43,4 +43,8 @@ export class NegociacaoesView extends View<Negociacoes>{
         const template = this.template(model);
         this.elemento.innerHTML = template; //inner vai transforma minha string em um elemento do DOM
     } */
+
+    private formata(data:Date): string{
+      return new Intl.DateTimeFormat().format(data)
+    }
 }

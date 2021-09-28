@@ -11,5 +11,5 @@ export abstract class View<T>{
         this.elemento.innerHTML = template; //Inner vai transforma nossa string em um elemento HTML é injetar dentro do DOM, no caso dntro da nossa div
     }
 
-    abstract template(model: T): string //método abstrato, obriga o desenvolvedor implementar essa classe em tempo de desenvolvimento.
+    protected abstract template(model: T): string //método abstrato, obriga o desenvolvedor implementar essa classe em tempo de desenvolvimento.
 }
